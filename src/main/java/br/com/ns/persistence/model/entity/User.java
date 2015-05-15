@@ -31,6 +31,19 @@ public class User implements Serializable {
 	@NotNull
 	@NotEmpty
 	private String email;
+	
+	@NotNull
+	@NotEmpty
+	private String username;
+
+	@NotNull
+	@NotEmpty
+	private String name;
+
+	@OneToMany(targetEntity = Address.class)
+	@JoinColumn(name = "user_id")
+	private List<Address> addresses;
+
 
 	public Long getId() {
 		return id;
@@ -72,16 +85,5 @@ public class User implements Serializable {
 		this.addresses = addresses;
 	}
 
-	@NotNull
-	@NotEmpty
-	private String username;
-
-	@NotNull
-	@NotEmpty
-	private String name;
-
-	@OneToMany(targetEntity = Address.class)
-	@JoinColumn(name = "user_id")
-	private List<Address> addresses;
-
+	
 }
