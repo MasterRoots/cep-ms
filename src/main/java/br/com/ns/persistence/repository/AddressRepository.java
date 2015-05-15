@@ -19,7 +19,7 @@ import br.com.ns.persistence.model.entity.Address;
 @Repository
 public interface AddressRepository extends CrudRepository<Address, Long> {
 
-	@Query(value = "select a from Address a where a.zipCode = :zipcode")
+	@Query(value = "select a from Address a where a.zipCode = :zipCode")
 	public Address findByZipCode(@Param("zipCode") String zipCode);
 
 }

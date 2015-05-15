@@ -3,20 +3,25 @@ package br.com.ns.persistence.model.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
- * Entidadepara representar um usuário
+ * Entidade para representar um usuário
  * 
  * @author rodrigo.braga
  *
  */
+@Entity
+@Table(name = "user")
 public class User implements Serializable {
 
 	/**
@@ -26,12 +31,13 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "user_id")
 	private Long id;
 
 	@NotNull
 	@NotEmpty
 	private String email;
-	
+
 	@NotNull
 	@NotEmpty
 	private String username;
@@ -41,9 +47,8 @@ public class User implements Serializable {
 	private String name;
 
 	@OneToMany(targetEntity = Address.class)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "id")
 	private List<Address> addresses;
-
 
 	public Long getId() {
 		return id;
@@ -85,5 +90,4 @@ public class User implements Serializable {
 		this.addresses = addresses;
 	}
 
-	
 }

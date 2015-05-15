@@ -57,6 +57,7 @@ public class Address implements Serializable {
 
 	@Id
 	@GeneratedValue
+	@Column(name="address_id")
 	private Long id;
 
 	public Long getId() {
@@ -144,7 +145,7 @@ public class Address implements Serializable {
 	@Override
 	public String toString() {
 		return String
-				.format("Address[zipcode=%s, street=%s, district=%s, city=%s, state=%s]",
+				.format("Address[id=%s, zipcode=%s, street=%s, district=%s, city=%s, state=%s]",
 						zipCode, street, district, city, state);
 	}
 
