@@ -66,7 +66,7 @@ public class AddressControllerTest {
 		resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.zipCode").value("08260210"));
 		resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.street").value("rua adolfo appia"));
 		resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.district").value("itaquera"));
-		//resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.city").value("São Paulo"));
+		resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.city").value("SAO PAULO"));
 		resultActions.andExpect(MockMvcResultMatchers.jsonPath("$.state").value("SP"));
 	}
 
