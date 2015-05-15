@@ -32,13 +32,15 @@ public class Address implements Serializable {
 	/**
 	 * Construtor padrão
 	 */
-	protected Address() {
+	public Address() {
 		// Empty
 	}
 
 	/**
 	 * Construtor customizado
 	 * 
+	 * @param id
+	 *            - CEP {@link Long}
 	 * @param zipCode
 	 *            - CEP {@link String}
 	 * @param street
@@ -50,14 +52,20 @@ public class Address implements Serializable {
 	 * @param state
 	 *            - Estado {@link String}
 	 */
-	public Address(String zipCode, String street, String district, String city,
-			String state) {
+	public Address(Long id, String zipCode, String street, String district,
+			String city, String state) {
+		this.id = id;
+		this.zipCode = zipCode;
+		this.street = street;
+		this.district = district;
+		this.city = city;
+		this.state = state;
 
 	}
 
 	@Id
 	@GeneratedValue
-	@Column(name="address_id")
+	@Column(name = "address_id")
 	private Long id;
 
 	public Long getId() {
@@ -71,7 +79,7 @@ public class Address implements Serializable {
 	@Column(name = "zipcode")
 	@NotNull
 	@NotEmpty
-	private Integer zipCode;
+	private String zipCode;
 
 	@NotNull
 	@NotEmpty
@@ -97,11 +105,11 @@ public class Address implements Serializable {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	public Integer getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(Integer zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
@@ -146,7 +154,7 @@ public class Address implements Serializable {
 	public String toString() {
 		return String
 				.format("Address[id=%s, zipcode=%s, street=%s, district=%s, city=%s, state=%s]",
-						zipCode, street, district, city, state);
+						id, zipCode, street, district, city, state);
 	}
 
 }
