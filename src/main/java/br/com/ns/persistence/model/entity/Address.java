@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -50,6 +55,18 @@ public class Address implements Serializable {
 
 	}
 
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Column(name = "zipcode")
 	@NotNull
 	@NotEmpty
@@ -58,7 +75,7 @@ public class Address implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Column(name = "street")
-	private Integer street;
+	private String street;
 
 	@NotNull
 	@NotEmpty
@@ -75,6 +92,10 @@ public class Address implements Serializable {
 	@Column(name = "state")
 	private String state;
 
+	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User user;
+
 	public Integer getZipCode() {
 		return zipCode;
 	}
@@ -83,11 +104,11 @@ public class Address implements Serializable {
 		this.zipCode = zipCode;
 	}
 
-	public Integer getStreet() {
+	public String getStreet() {
 		return street;
 	}
 
-	public void setStreet(Integer street) {
+	public void setStreet(String street) {
 		this.street = street;
 	}
 

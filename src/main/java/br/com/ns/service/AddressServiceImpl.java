@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ns.exception.InvalidZipcodeFormatException;
+import br.com.ns.exception.ResourceNotFoundException;
 import br.com.ns.persistence.model.entity.Address;
 import br.com.ns.persistence.repository.AddressRepository;
 
@@ -66,6 +67,81 @@ public class AddressServiceImpl implements AddressService {
 		}
 
 		return address;
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * br.com.ns.service.AddressService#addAddress(br.com.ns.persistence.model
+	 * .entity.Address)
+	 */
+	@Override
+	public Long addAddress(Address address) {
+		try {
+			Address newAddress = repository.save(address);
+			return newAddress.getId();
+
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see br.com.ns.service.AddressService#getAddress(java.lang.Long)
+	 */
+	@Override
+	public Address getAddress(Long id) {
+
+		try {
+			Address address = repository.findOne(id);
+
+			if (address != null) {
+				return address;
+			} else {
+				throw new ResourceNotFoundException();
+			}
+
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * br.com.ns.service.AddressService#updateAddress(br.com.ns.persistence.
+	 * model.entity.Address)
+	 */
+	@Override
+	public void updateAddress(Address address) {
+
+		try {
+			repository.save(address);
+		} catch (Exception e) {
+			throw e;
+		}
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * br.com.ns.service.AddressService#deleteAddress(br.com.ns.persistence.
+	 * model.entity.Address)
+	 */
+	@Override
+	public void deleteAddress(Long id) {
+		try {
+			repository.delete(id);
+		} catch (Exception e) {
+			throw e;
+		}
 
 	}
 
