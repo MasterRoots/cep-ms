@@ -62,7 +62,7 @@ public class AddressController {
 
 	}
 
-	@RequestMapping(value = "{addressId}", method = { RequestMethod.PUT }, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "{addressId}", method = { RequestMethod.GET }, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<Address> getAddress(@PathVariable("addressId") Long id) {
 		try {
