@@ -31,6 +31,8 @@ public class AddressServiceImpl implements AddressService {
 	 * 
 	 * @see br.com.ns.service.AddressService#getAddress(java.lang.String)
 	 */
+
+	@Override
 	public Address getAddress(String zipCode) {
 		return zipCodeAttemptsSearch(zipCode);
 	}
@@ -68,24 +70,6 @@ public class AddressServiceImpl implements AddressService {
 
 		return address;
 
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * br.com.ns.service.AddressService#addAddress(br.com.ns.persistence.model
-	 * .entity.Address)
-	 */
-	@Override
-	public Long addAddress(Address address) {
-		try {
-			Address newAddress = repository.save(address);
-			return newAddress.getId();
-
-		} catch (Exception e) {
-			throw e;
-		}
 	}
 
 	/*
@@ -143,6 +127,24 @@ public class AddressServiceImpl implements AddressService {
 			throw e;
 		}
 
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * br.com.ns.service.AddressService#addAddress(br.com.ns.persistence.model
+	 * .entity.Address)
+	 */
+	@Override
+	public Long addAddress(Address address) {
+		try {
+			Address newAddress = repository.save(address);
+			return newAddress.getId();
+
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 }

@@ -25,7 +25,7 @@ import br.com.ns.service.AddressService;
  *
  */
 @RestController
-@RequestMapping(value = "/address/", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(value = "/address", produces = { MediaType.APPLICATION_JSON_VALUE })
 public class AddressController {
 
 	@Autowired
