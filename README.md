@@ -8,5 +8,6 @@ Frameworks e tecnologias utilizadas :
   * Gson
   * Jackson
   * Tomcat....entre outros que estão disponíveis no Spring-Boot
-  * 
+  
+
   
